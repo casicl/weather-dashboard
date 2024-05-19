@@ -5,6 +5,8 @@ var searchForm = document.querySelector("#city-input");
 var searchBtn = document.querySelector("#city-submit");
 var mainWeather = document.querySelector(".main-weather");
 var fiveDayEl = document.querySelector(".five-day");
+var cityHistory = document.querySelector("city-history");
+
 
 //day.js plugins
 // dayjs.extend(window.dayjs_plugin_utc);
@@ -17,17 +19,18 @@ function citySearchSubmit(event) {
   var city = searchForm.value.trim();
   searchWeather(city);
   console.log(event);
+  localStorage.setItem("city", JSON.stringify);
 }
 //how to local storage, i have no idea
-function appendToHistory(search) {
-  if (cityHistory.indexOf(search) !== -1) {
-    return;
-  }
-  cityHistory.push(search);
+// function appendToHistory(search) {
+//   if (cityHistory.indexOf(search) !== -1) {
+//     return;
+//   }
+//   cityHistory.push(search);
 
-  localStorage.setItem("city-history", JSON.stringify(cityHistory));
-  renderCityHistory();
-}
+//   localStorage.setItem("city-history", JSON.stringify(cityHistory));
+//   renderCityHistory();
+// }
 //const cityHistory = JSON.parse(localStorage.getItem("cityHistoryEl")) ||[];
 //const cityHistoryEl = document.getElementById("city-history");
 //cityHistoryEl(item => {
@@ -92,6 +95,9 @@ function searchWeather(city) {
                     
                     `;
             fiveDayEl.innerHTML = fiveDayCard;
+            
+            
+
           }
         });
     });
@@ -126,5 +132,7 @@ function appendToHistory(search) {
   localStorage.setItem("city-history", JSON.stringify(cityHistory));
   renderCityHistory();
 }
+
+
 //event listener to submit form for city search
 searchBtn.addEventListener("click", citySearchSubmit);
