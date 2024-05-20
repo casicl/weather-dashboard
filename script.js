@@ -18,8 +18,11 @@ function citySearchSubmit(event) {
   console.log("click");
   var city = searchForm.value.trim();
   searchWeather(city);
+  var cities = JSON.parse(localStorage.getitem(cities)) || [];
+  cities.push(city);
   console.log(event);
-  localStorage.setItem("city", JSON.stringify);
+ 
+  localStorage.setItem("cities", JSON.stringify(cities));
 }
 //how to local storage, i have no idea
 // function appendToHistory(search) {
