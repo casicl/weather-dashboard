@@ -1,16 +1,13 @@
 var apiKey = "f1184d25cda8c95b7f70e8f490ba15c4";
-//var requestURL = `https:/api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid={f1184d25cda8c95b7f70e8f490ba15c4}`;
+
 
 var searchForm = document.querySelector("#city-input");
 var searchBtn = document.querySelector("#city-submit");
 var mainWeather = document.querySelector(".main-weather");
 var fiveDayEl = document.querySelector(".five-day");
-var cityHistory = document.querySelector("city-history");
+var cityHistoryEl = document.querySelector("city-search");
 
 
-//day.js plugins
-// dayjs.extend(window.dayjs_plugin_utc);
-// dayjs.extend(window.dayjs_plugin_timezone);
 
 //city search function
 function citySearchSubmit(event) {
@@ -18,29 +15,21 @@ function citySearchSubmit(event) {
   console.log("click");
   var city = searchForm.value.trim();
   searchWeather(city);
-  var cities = JSON.parse(localStorage.getitem(cities)) || [];
+  var cities = JSON.parse(localStorage.getItem(cities)) || [];
   cities.push(city);
-  console.log(event);
- 
   localStorage.setItem("cities", JSON.stringify(cities));
-}
-//how to local storage, i have no idea
-// function appendToHistory(search) {
-//   if (cityHistory.indexOf(search) !== -1) {
-//     return;
-//   }
-//   cityHistory.push(search);
+ 
+  if (cities) {
+    const cityList = document.createElement("li");
+    cityList.textContent = city;
+    document.getElementById("city-search").appendChild(cityList);
+    // const button = document.createElement("button");
+    // document.getElementById.
 
-//   localStorage.setItem("city-history", JSON.stringify(cityHistory));
-//   renderCityHistory();
-// }
-//const cityHistory = JSON.parse(localStorage.getItem("cityHistoryEl")) ||[];
-//const cityHistoryEl = document.getElementById("city-history");
-//cityHistoryEl(item => {
-//  const cityHistory = document.createElement("div");
-//cityHistory.textContent = item.name;
-//displayElement.appendChild(itemElement);
-//});
+  }
+ 
+}
+
 
 //fetch api
 function searchWeather(city) {
@@ -57,7 +46,7 @@ function searchWeather(city) {
       console.log(todaysDate)
 
       //added html elements with weather data
-      //var date = dayjs().format('M/D/YYYY');
+   
       var currentWeather = `
         <h2>${data.name}</h2>
         <span>${todaysDate}</span>
@@ -107,34 +96,34 @@ function searchWeather(city) {
 }
 
 //city search function
-function citySearchSubmit(event) {
-  event.preventDefault();
-  console.log("click");
-  var city = searchForm.value.trim();
-  searchWeather(city);
-  for (let i = 0; i < cityHistory.length; i++) {
-    const btn = document.createElement("button");
-    btn.textContent = cityHistory[i];
-    searchHistoryContainer.append(btn);
-    btn.setAttribute("city-search", cityHistory[i]);
-  }
+// function citySearchSubmit(event) {
+//   event.preventDefault();
+//   console.log("click");
+//   var city = searchForm.value.trim();
+//   searchWeather(city);
+//   for (let i = 0; i < cityHistory.length; i++) {
+//     const btn = document.createElement("button");
+//     btn.textContent = cityHistory[i];
+//     searchHistoryContainer.append(btn);
+//     btn.setAttribute("city-search", cityHistory[i]);
+//   }
 
-  console.log(event);
-}
+//   console.log(event);
+// }
 //how to local storage, i have no idea
 //add cities to local storage and display history
-var cityHistory = [];
-var displayCityHistory = document.getElementById("city-history");
+// var cityHistory = [];
+// var displayCityHistory = document.getElementById("city-history");
 
-function appendToHistory(search) {
-  if (cityHistory.indexOf(search) !== -1) {
-    return;
-  }
-  cityHistory.push(search);
+// function appendToHistory(search) {
+//   if (cityHistory.indexOf(search) !== -1) {
+//     return;
+//   }
+//   cityHistory.push(search);
 
-  localStorage.setItem("city-history", JSON.stringify(cityHistory));
-  renderCityHistory();
-}
+//   localStorage.setItem("city-history", JSON.stringify(cityHistory));
+//   renderCityHistory();
+// }
 
 
 //event listener to submit form for city search
