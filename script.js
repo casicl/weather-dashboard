@@ -20,12 +20,11 @@ function citySearchSubmit(event) {
   localStorage.setItem("cities", JSON.stringify(cities));
  
   if (cities) {
-    const cityList = document.createElement("li");
+    const cityList = document.createElement("button");
     cityList.textContent = city;
     document.getElementById("city-search").appendChild(cityList);
-    // const button = document.createElement("button");
-    // document.getElementById.
-
+  
+   
   }
  
 }
@@ -95,35 +94,7 @@ function searchWeather(city) {
     });
 }
 
-//city search function
-// function citySearchSubmit(event) {
-//   event.preventDefault();
-//   console.log("click");
-//   var city = searchForm.value.trim();
-//   searchWeather(city);
-//   for (let i = 0; i < cityHistory.length; i++) {
-//     const btn = document.createElement("button");
-//     btn.textContent = cityHistory[i];
-//     searchHistoryContainer.append(btn);
-//     btn.setAttribute("city-search", cityHistory[i]);
-//   }
 
-//   console.log(event);
-// }
-//how to local storage, i have no idea
-//add cities to local storage and display history
-// var cityHistory = [];
-// var displayCityHistory = document.getElementById("city-history");
-
-// function appendToHistory(search) {
-//   if (cityHistory.indexOf(search) !== -1) {
-//     return;
-//   }
-//   cityHistory.push(search);
-
-//   localStorage.setItem("city-history", JSON.stringify(cityHistory));
-//   renderCityHistory();
-// }
 
 
 //event listener to submit form for city search
