@@ -23,7 +23,8 @@ function citySearchSubmit(event) {
     const cityList = document.createElement("button");
     cityList.textContent = city;
     document.getElementById("city-search").appendChild(cityList);
-  
+    cityList.addEventListener("click", ()=> {searchWeather(city)});
+    console.log(searchWeather);
    
   }
  
