@@ -10,6 +10,8 @@ N/A
 ## Usage
 ![Screenshot weather api](https://github.com/casicl/weather-dashboard/assets/158116041/dd7776f1-a42b-4493-ac13-71043cb39c46)
 
+https://drive.google.com/file/d/1yM3vFnPf4YI-ivHuvDHSoqwHRAmxSMAN/view?usp=sharing
+
 
 ## Credits
 
